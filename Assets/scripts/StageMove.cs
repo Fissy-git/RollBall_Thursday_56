@@ -21,12 +21,12 @@ public class StageMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_playerInput.ReadValue<Vector2>());
+        //Debug.Log(_playerInput.ReadValue<Vector2>());
         //stage‚ğ‰ñ“]‚³‚¹‚éˆ—(horizontal:…•½,vertical:‚’¼)
         float horizontalInput = _playerInput.ReadValue<Vector2>().x;
         float verticalInput = _playerInput.ReadValue<Vector2>().y;
 
-        _stage.transform.Rotate(horizontalInput,0f,verticalInput);
+        _stage.transform.Rotate(horizontalInput*0.05f,0f,verticalInput*0.05f);
 
     }
 }
