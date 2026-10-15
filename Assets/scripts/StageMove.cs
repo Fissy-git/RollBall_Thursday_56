@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,8 +26,16 @@ public class StageMove : MonoBehaviour
         //stage‚ğ‰ñ“]‚³‚¹‚éˆ—(horizontal:…•½,vertical:‚’¼)
         float horizontalInput = _playerInput.ReadValue<Vector2>().x;
         float verticalInput = _playerInput.ReadValue<Vector2>().y;
+        //_stage.transform.Rotate(horizontalInput*0.05f,0f,verticalInput*0.05f);
 
-        _stage.transform.Rotate(horizontalInput*0.05f,0f,verticalInput*0.05f);
+        //Cevtor2‚Ì“ü—Í‚ğVector3‚É•ÏŠ·
+        Vector3 rotation = new Vector3(horizontalInput, 0f, verticalInput);
+        //ƒIƒCƒ‰[Šp‚É•ÏŠ·
+        quaternion tilt = Quaternion.Euler(rotation.x,0f, rotation.z);
+        //•ÏŠ·‚µ‚½’l‚ğRigitbody‚É“n‚·
+        _stage.gameObject.GetComponent<Rigidbody>().MoveRotation(_stage.gameObject.GetComponent<Rigidbody>().transform.rotation * tilt);
+            
+        
 
     }
 }

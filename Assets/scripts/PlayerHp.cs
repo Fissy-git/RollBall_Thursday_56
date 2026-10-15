@@ -7,30 +7,21 @@ public class PlayerHp : MonoBehaviour
 
     private int playerHp;
     private int maxPlayerHp = 3;
-    [SerializeField]
-    private TextMeshProUGUI displayPlayerHp;
-    [SerializeField]
-    private TextMeshProUGUI gOText;
 
     private void Start()
     {
         playerHp = maxPlayerHp;
-        displayPlayerHp.text = $"HP:{playerHp}";
 
     }
-    private void OnTriggerEnter(Collider other)
+   
+    public void Damage()
     {
-        if (other.tag == "Player")
-        {
-            Debug.Log("damage");
-            playerHp -= 1;
-            displayPlayerHp.text = $"HP:{playerHp}";
-            if(playerHp == 0)
-            {
-                Destroy(other.gameObject);
-                gOText.text = "GameOver";
-            }
+        playerHp -= 1;
+        Debug.Log(playerHp);
 
+        if (playerHp == 0 )
+        {
+            Destroy(this.gameObject);
         }
     }
 }

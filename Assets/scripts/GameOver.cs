@@ -4,6 +4,8 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     [SerializeField]
+    private TextMeshProUGUI displayPlayerHp;
+    [SerializeField]
     private TextMeshProUGUI gOText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
