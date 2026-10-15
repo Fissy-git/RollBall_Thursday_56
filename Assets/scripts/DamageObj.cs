@@ -32,6 +32,7 @@ public class DamageObj : MonoBehaviour
             {
                 playerHp.Damage();
               
+                playerHp.GetComponent<PlayerHp>().Damage();
             }
         }
     }
